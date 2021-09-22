@@ -8,5 +8,3 @@ File này sẽ chứa các thông tin về Project
 
 
 ![Entity Model](https://imgur.com/oKNZ1gJ.png)
-
-tuấn
