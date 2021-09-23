@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 21, 2021 lúc 05:36 PM
--- Phiên bản máy phục vụ: 10.4.20-MariaDB
--- Phiên bản PHP: 7.4.22
+-- Thời gian đã tạo: Th9 23, 2021 lúc 06:01 PM
+-- Phiên bản máy phục vụ: 10.4.18-MariaDB
+-- Phiên bản PHP: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -90,6 +90,14 @@ CREATE TABLE `tbluser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Đang đổ dữ liệu cho bảng `tbluser`
+--
+
+INSERT INTO `tbluser` (`user_id`, `user_name`, `pass`, `name`, `usaged`, `tel`, `note`) VALUES
+(1, 'hoangviet', '123', 'Nguyen Hoang Viet', 0, '01111111111', ''),
+(2, 'hoangviet1', '123', 'Nguyen Hoang Viet', 0, '01111111111', '');
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -146,7 +154,7 @@ ALTER TABLE `tblgroup`
 -- AUTO_INCREMENT cho bảng `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
