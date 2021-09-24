@@ -89,4 +89,80 @@ public class UserDAO extends DAO{
             }
             return false;
         }
+        
+        public boolean addUser(String user_name, String pass, String name, String tel) {
+            String query = "INSERT INTO tblUser (user_name, pass, name, tel) VALUES (?, ?, ?, ?)";
+            try {
+                PreparedStatement ps = con.prepareStatement(query);
+                user_name = user_name.trim();
+                name = name.trim();
+                tel = tel.trim();
+                ps.setString(1, user_name);
+                ps.setString(2, pass);
+                ps.setString(3, name);
+                ps.setString(4, tel);
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        }
+        
+        public boolean editUserInfo(String user_name, String name, String tel) {
+            String query = "UPDATE tblUser SET name = ?, tel = ? WHERE user_name = ?";
+            try {
+                PreparedStatement ps = con.prepareStatement(query);
+                user_name = user_name.trim();
+                name = name.trim();
+                tel = tel.trim();
+                ps.setString(3, user_name);
+                ps.setString(1, name);
+                ps.setString(2, tel);
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        }
+        
+        public boolean editUserPass(String user_name, String old_pass, String new_pass) {
+            String query = "UPDATE tblUser SET pass = ? WHERE user_name = ? AND pass = ?";
+            int res;
+            try {
+                PreparedStatement ps = con.prepareStatement(query);
+                user_name = user_name.trim();
+                ps.setString(1, new_pass);
+                ps.setString(2, user_name);
+                ps.setString(3, old_pass);
+                res = ps.executeUpdate();
+                //System.out.println(res);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+            if (res == 0) {
+                return false;
+            }
+            return true;
+        }
+        
+        public boolean deleteUser(String user_name) {
+            String query = "DELETE FROM tblUser WHERE user_name = ?";
+            int res;
+            try {
+                PreparedStatement ps = con.prepareStatement(query);
+                user_name = user_name.trim();
+                ps.setString(1, user_name);
+                res = ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+            if (res == 0) {
+                return false;
+            }
+            return true;
+        }
 }

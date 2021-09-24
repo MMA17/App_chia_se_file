@@ -24,7 +24,7 @@ public class test{
 //        else {
 //            System.out.println(users.get(0).getName());
 //        }
-          boolean check = new UserDAO().checkLogin("hoangviet", "123");
+          boolean check = new UserDAO().editUserPass("hviet", "123456", "123");
           System.out.println(check);    
     }
 }
