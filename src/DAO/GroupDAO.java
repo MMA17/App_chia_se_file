@@ -82,15 +82,25 @@ public class GroupDAO extends DAO {
         return true;
     }
 
-    public boolean createGroup(User user, Group group) {
+    public boolean createGroup(User user, Group group, String note) {
         String sql = "INSERT INTO tblgroup(group_name, group_type) VALUES(?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, group.getGroup_name());
-            ps.set(2, group.getGroup_type());
+            ps.setString(2, group.getGroup_type());
             ResultSet rs = ps.executeQuery();
+            
+            addUser(user, group,note);
         } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
-                
+        return true;
+    }
+    
+    
+//    Overload
+    public boolean createGroup(User user, Group group) {
+        return createGroup(user, group,"");
     }
 }
