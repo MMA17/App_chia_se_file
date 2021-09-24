@@ -58,11 +58,11 @@ public class GroupDAO extends DAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, group.getGroup_id());
             ps.executeUpdate();
-           
         } catch (Exception e) {
             e.printStackTrace();
             res = false;
         }
+        
         return res;
     }
 
