@@ -9,3 +9,5 @@ Sơ đồ Database của Project
 
 Sơ đồ thực thể
 ![Entity Model](https://imgur.com/oKNZ1gJ.png)
+
+1
