@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import DAO.FileDAO;
 import DAO.UserDAO;
 import Model.User;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ public class test{
 //        else {
 //            System.out.println(users.get(0).getName());
 //        }
-          boolean check = new UserDAO().editUserPass("hviet", "123456", "123");
+          boolean check = (new FileDAO()).deleteFile(4);
           System.out.println(check);    
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 23, 2021 lúc 06:01 PM
+-- Thời gian đã tạo: Th9 24, 2021 lúc 03:55 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.5
 
@@ -34,6 +34,14 @@ CREATE TABLE `tblfile` (
   `file_extension` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `owner` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tblfile`
+--
+
+INSERT INTO `tblfile` (`file_id`, `file_name`, `size`, `file_extension`, `owner`) VALUES
+(1, 'test file', 1024, '.pdf', 1),
+(2, 'test file 2', 1024, '.pdf', 2);
 
 -- --------------------------------------------------------
 
@@ -73,6 +81,14 @@ CREATE TABLE `tblpermission` (
   `file_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tblpermission`
+--
+
+INSERT INTO `tblpermission` (`readPermission`, `deletePermission`, `user_id`, `file_id`) VALUES
+(1, 1, 1, 1),
+(1, 1, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -95,7 +111,8 @@ CREATE TABLE `tbluser` (
 
 INSERT INTO `tbluser` (`user_id`, `user_name`, `pass`, `name`, `usaged`, `tel`, `note`) VALUES
 (1, 'hoangviet', '123', 'Nguyen Hoang Viet', 0, '01111111111', ''),
-(2, 'hoangviet1', '123', 'Nguyen Hoang Viet', 0, '01111111111', '');
+(2, 'hoangviet1', '123', 'Nguyen Hoang Viet', 0, '01111111111', ''),
+(6, 'hviet', '123', 'hoang viet 222', 0, '122201021', NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -132,7 +149,8 @@ ALTER TABLE `tblpermission`
 -- Chỉ mục cho bảng `tbluser`
 --
 ALTER TABLE `tbluser`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_name` (`user_name`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -142,7 +160,7 @@ ALTER TABLE `tbluser`
 -- AUTO_INCREMENT cho bảng `tblfile`
 --
 ALTER TABLE `tblfile`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `tblgroup`
@@ -154,7 +172,7 @@ ALTER TABLE `tblgroup`
 -- AUTO_INCREMENT cho bảng `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
