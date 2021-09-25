@@ -25,7 +25,8 @@ public class GroupDAO extends DAO {
             ps.setInt(1, group.getGroup_id());
             ResultSet rs = ps.executeQuery();
 //            System.out.println(rs);
-            if (rs.equals(null)) {
+            int row=rs.getRow();
+            if (row < 1) {
                 return false;
             } else {
                 sql = "INSERT INTO tbljoingroup(note, user_id, group_id) VALUES(?, ?, ?)";
